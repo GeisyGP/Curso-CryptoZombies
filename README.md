@@ -1,7 +1,7 @@
 # Curso-CryptoZombies
 Anotações e código de estudo de smart contracts do curso CryptoZombies. O curso ensina Solidity através da criação de um jogo de zumbis.
 
-## 1ª Lição - Making the Zombie Factory
+## 1ª Lição - Fazendo a Fábrica de Zumbi
 
 Inicia com a função pragma, especificando que versão de solidity irá ser usada no contrato. Cria o contrato declarando `contract ZombieFactory{}`.
 
@@ -23,7 +23,7 @@ Inicia com a função pragma, especificando que versão de solidity irá ser usa
 - Para criar funções "pseudo aleatórias" usa-se a função hash **keccak256**.
 - **Events**: são uma forma do contrato comunicar que algo aconteceu no blockchain para o front-end do aplicativo, que pode "escutar" certos eventos e agir quando eles acontecerem.
 
-## 2ª Lição - Zombies Attack Their Victims
+## 2ª Lição - Zumbis atacam suas vítimas
 
 - Além de array e struct, **mapping** é outra forma de armazenar e organizar dados: `mapping = (tipo da chave => tipo do valor) nome;`
 
@@ -43,3 +43,19 @@ Inicia com a função pragma, especificando que versão de solidity irá ser usa
 - Para adicionar dois digitos finais:
   - `newDna = newDna - newDna % 100 + 99;`
   - Explicação: "suponha que newDna é 334455. Então newDna % 100 é 55, então newDna - newDna % 100 é 334400. Finalmente adicione 99 para ter 334499."
+
+## 3º Lição  - Conceitos Avançados de Solidity
+
+Por ser external o contrato tem uma falha de segurança, para resolver isso podemos tornar o contrato **Ownable** (significa que ele tem um dono). 
+
+Para usar **Ownable** é preciso criar um novo contrato e copiar o código que consta em `ownable.sol` e também está disponível na biblioteca [OpenZeppelin](https://www.openzeppelin.com/).
+
+- Função modificadora tem uma palavra reservada `modifier`. Ela não pode ser chamada diretamente como uma função, mas pode ser usada no final de uma definição de função para mudar seu comportamento.
+- No geral definir o tamanho de uma variável (uint16) não muda o custo de gás. Porém em structs sim.
+- Solidity oferece unidades de tempo:
+  - `now`: retorna unix timestamp atual (o número de segundos que passou desde 1 de Janeiro de 1970);
+  - `1 days` : 86400 segundos, assim como minutos, horas e semanas.
+- Função `view` são de graça quando chamadas externamente.
+- Usar `storage` é uma das operações mais cara em Solidity.
+- Diferente de arrays em armazenamento (storage), **arrays em memória** tem que ser criado com tamanho.
+  -  Em `uint[] memory result = new uint[](ownerZombieCount[_owner]);` o tamanho do array é definido por(ownerZombieCount[_owner]).
