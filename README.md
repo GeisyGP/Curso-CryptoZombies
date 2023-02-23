@@ -70,3 +70,9 @@ Para usar **Ownable** é preciso criar um novo contrato e copiar o código que c
 No StackOverflow há ideias de (como gerar um número aleatório seguro)[https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract]. Como no jogo não será realizada grandes transações, é usado o keccak256:
 
 - Ele será "alimentado" por: `now, msg.sender, randNonce` em que randNonce é um valor incrementado.
+ 
+## 5ª Lição - ERC721 & Cripto-Colecionáveis 
+
+Tokens ERC20 são capazes de interagir com qualquer outro token ERC20, funciona bem quando agem como moedas. Porém em um jogo de zumbi não faz sentido enviar 0.34 de um zumbi. Existe outro padrão de token, o ERC721 melhor para cripto-colecionáveis.
+
+> "Tokens ERC721_ não são intercambiáveis uma vez que cada um é suposto para ser único, e não divisíveis. Você somente pode trocá-los em unidades inteiras, e cada um tem um ID único. Então esses se encaixam perfeitamente para fazer nossos zumbis trocáveis."
