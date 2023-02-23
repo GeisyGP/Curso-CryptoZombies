@@ -76,3 +76,16 @@ No StackOverflow há ideias de (como gerar um número aleatório seguro)[https:/
 Tokens ERC20 são capazes de interagir com qualquer outro token ERC20, funciona bem quando agem como moedas. Porém em um jogo de zumbi não faz sentido enviar 0.34 de um zumbi. Existe outro padrão de token, o ERC721 melhor para cripto-colecionáveis.
 
 > "Tokens ERC721_ não são intercambiáveis uma vez que cada um é suposto para ser único, e não divisíveis. Você somente pode trocá-los em unidades inteiras, e cada um tem um ID único. Então esses se encaixam perfeitamente para fazer nossos zumbis trocáveis."
+
+- **Overflow** (transbordamento) é quando se tem por exemplo, um uint8, ou seja, só pode guardar (2^8)-1 = 255. Se atribuido 256 a uma variável de 8 bits, ela se torna igual a 0 (como as horas, 23:59, depois 00:00).
+- **Underflow** é onde você subtrai: 0 - 1, de um uint8 e vai dar igual a 255.
+
+Para não acontecer esses erros, OpenZeppelin criou uma library (biblioteca) chamada SafeMath. Bibliotecas são parecidas com contratos, mas com o uso da palavra `using` ela implementa todos os métodos em outro tipo de dado. 
+
+- A diferença de `require` e de `assert` é que o primeiro irá reembolsar o usuário o resto do seu gás quando a função falhar, enquanto que assert não irá.
+  
+Para comentar um código em Solidity usa-se o padrão natspec:
+- @title e @author são simples.
+- @notice explica para o usuário o que o contrato / função faz. 
+- @dev é para explicar detalhes extras para os desenvolvedores.
+- @param e @return são para descrever o que cada parâmetro e valor de retorno da função fazem. 

@@ -2,9 +2,15 @@ pragma solidity ^0.4.19;
 
 import "./zombieattack.sol";
 import "./erc721.sol"
+import "./safemath.sol";
+
+///@title Contrato para gerenciar a transferência de zumbis
+///@author Geisy Poncio
+///@dev Em conformidade com a implementação do rascunho de especificação ERC721 do OpenZeppelin
 
 contract ZombieOwnership is ZombieAttack, ERC721 {
-
+  
+  using SafeMath for uint256;
   mapping (uint => address) zombieApprovals;
   
   function balanceOf(address _owner) public view returns (uint256 _balance) {
@@ -16,8 +22,8 @@ contract ZombieOwnership is ZombieAttack, ERC721 {
   }
 
   function _transfer(address _from, address _to, uint256 _tokenId) private {
-    ownerZombieCount[_to]++;
-    ownerZombieCount[_from]--;
+    ownerZombieCount[_to] = ownerZombieCount[_to].add(1);
+    ownerZombieCount[_from] = ownerZombieCount[_from].sub(1);
     zombieToOwner[_tokenId] = _to;
     Transfer(_from, _to, _tokenId);
   }
