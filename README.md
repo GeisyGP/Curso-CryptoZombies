@@ -44,13 +44,13 @@ Inicia com a função pragma, especificando que versão de solidity irá ser usa
   - `newDna = newDna - newDna % 100 + 99;`
   - Explicação: "suponha que newDna é 334455. Então newDna % 100 é 55, então newDna - newDna % 100 é 334400. Finalmente adicione 99 para ter 334499."
 
-## 3º Lição  - Conceitos Avançados de Solidity
+## 3ª Lição  - Conceitos Avançados de Solidity
 
 Por ser external o contrato tem uma falha de segurança, para resolver isso podemos tornar o contrato **Ownable** (significa que ele tem um dono). 
 
 Para usar **Ownable** é preciso criar um novo contrato e copiar o código que consta em `ownable.sol` e também está disponível na biblioteca [OpenZeppelin](https://www.openzeppelin.com/).
 
-- Função modificadora tem uma palavra reservada `modifier`. Ela não pode ser chamada diretamente como uma função, mas pode ser usada no final de uma definição de função para mudar seu comportamento.
+- Função modificadora personalizável tem uma palavra reservada `modifier`. Ela não pode ser chamada diretamente como uma função, mas pode ser usada no final de uma definição de função para mudar seu comportamento.
 - No geral definir o tamanho de uma variável (uint16) não muda o custo de gás. Porém em structs sim.
 - Solidity oferece unidades de tempo:
   - `now`: retorna unix timestamp atual (o número de segundos que passou desde 1 de Janeiro de 1970);
@@ -59,3 +59,14 @@ Para usar **Ownable** é preciso criar um novo contrato e copiar o código que c
 - Usar `storage` é uma das operações mais cara em Solidity.
 - Diferente de arrays em armazenamento (storage), **arrays em memória** tem que ser criado com tamanho.
   -  Em `uint[] memory result = new uint[](ownerZombieCount[_owner]);` o tamanho do array é definido por(ownerZombieCount[_owner]).
+
+## 4ª Lição - Sistema de Batalha Zumbi
+
+- Outra função modificadora utilizada é o `payable`:
+  - `msg.value` (pode transferir Ether)
+  - `transfer` (transfere Ether para um endereço)
+  - `this.balance` (saldo total do contrato)
+  
+No StackOverflow há ideias de (como gerar um número aleatório seguro)[https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract]. Como no jogo não será realizada grandes transações, é usado o keccak256:
+
+- Ele será "alimentado" por: `now, msg.sender, randNonce` em que randNonce é um valor incrementado.
