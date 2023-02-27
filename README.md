@@ -89,3 +89,24 @@ Para comentar um código em Solidity usa-se o padrão natspec:
 - @notice explica para o usuário o que o contrato / função faz. 
 - @dev é para explicar detalhes extras para os desenvolvedores.
 - @param e @return são para descrever o que cada parâmetro e valor de retorno da função fazem. 
+
+## 6ª Lição - Aplicativos Front-end & Web3.js
+
+> "**Infura** é um serviço que mantém um conjunto de nós do Ethereum com uma camada de cache para leituras rápidas, que você pode acessar gratuitamente por meio de sua API. Usando o Infura como um provedor, você pode enviar e receber mensagens de forma confiável de/para o blockchain Ethereum sem precisar configurar e manter seu próprio nó." 
+
+Para interagirem com sites que usam o web3, existe o [Metamask](https://metamask.io/) que é uma extensão do Chrome.
+
+> "O Metamask usa os servidores da Infura por baixo dos panos como um provedor web3"
+
+- `call()` é usada em funções view e pure;
+- `send()` é usado em funções que não sejam view e pure, ela criará uma transação e alterará os dados no blockchain (custa gas);
+
+Para esvaziar uma div, pode-se usar a linha de código:
+```
+%("#zombies").empty();
+```
+Em que zombies é a div.
+
+No web3.js é possível disparar alguma lógica toda vez que um evento for ativado, no caso tinhamos o evento: `event NewZombie(uint zombieId, string name, uint dna);` no contrato. 
+
+> eventos tem menor custo de gas.
