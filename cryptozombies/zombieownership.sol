@@ -1,7 +1,7 @@
 pragma solidity ^0.4.19;
 
 import "./zombieattack.sol";
-import "./erc721.sol"
+import "./erc721.sol";
 import "./safemath.sol";
 
 ///@title Contrato para gerenciar a transferência de zumbis
@@ -34,7 +34,7 @@ contract ZombieOwnership is ZombieAttack, ERC721 {
 
   function approve(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
     zombieApprovals[_tokenId] = _to;
-    Approval(msg.sender, _approved, _tokenId);
+    Approval(msg.sender, _to, _tokenId);
   }
 
   function takeOwnership(uint256 _tokenId) public {

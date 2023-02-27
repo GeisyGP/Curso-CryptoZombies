@@ -49,7 +49,7 @@ contract ZombieFeeding is ZombieFactory {
     if (keccak256(_species) == keccak256("kitty")) {
       newDna = newDna - newDna % 100 + 99;
     }
-    _createZombie("NoName", newDna);
+    _createZombies("NoName", newDna);
     _triggerCooldown(myZombie);
   }
 

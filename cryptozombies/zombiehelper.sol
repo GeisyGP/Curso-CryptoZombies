@@ -9,7 +9,7 @@ contract ZombieHelper is ZombieFeeding {
     uint levelUpFee = 0.001 ether;
 
     modifier aboveLevel(uint _level, uint _zombieId) {
-        zombies[_zombieId].level >= _level;
+        require(zombies[_zombieId].level >= _level);
         _;
     }
 
