@@ -67,7 +67,7 @@ Para usar **Ownable** é preciso criar um novo contrato e copiar o código que c
   - `transfer` (transfere Ether para um endereço)
   - `this.balance` (saldo total do contrato)
   
-No StackOverflow há ideias de (como gerar um número aleatório seguro)[https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract]. Como no jogo não será realizada grandes transações, é usado o keccak256:
+No StackOverflow há ideias de [como gerar um número aleatório seguro](https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract). Como no jogo não será realizada grandes transações, é usado o keccak256:
 
 - Ele será "alimentado" por: `now, msg.sender, randNonce` em que randNonce é um valor incrementado.
  
